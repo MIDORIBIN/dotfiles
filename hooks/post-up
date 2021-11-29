@@ -1,0 +1,33 @@
+#!/bin/bash
+set -euo pipefail
+cd "$(dirname "$0")"
+
+
+CONTAINER_NAME="dotfile_build"
+OUTPUT=${HOME}/local
+
+
+function preprocess () {
+    mkdir -p ${OUTPUT}
+    docker build --add-host="archive.ubuntu.com:160.26.2.187" -t dotfile:build -f build/Dockerfile .
+    docker create --name ${CONTAINER_NAME} dotfile:build
+}
+
+
+function process () {
+    docker cp ${CONTAINER_NAME}:/root/local/bin/ ${OUTPUT}
+    docker cp ${CONTAINER_NAME}:/root/local/share/bash-completion/ ${OUTPUT}/share/
+}
+
+
+function postprocess () {
+    docker rm ${CONTAINER_NAME}
+}
+
+echo "start post-up"
+
+preprocess
+process
+postprocess
+
+echo "end post-up"
