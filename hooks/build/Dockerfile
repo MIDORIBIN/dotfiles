@@ -11,7 +11,10 @@ RUN apt-get update \
  && apt-get -y clean \
  && rm -rf /var/lib/apt/lists/*
 
-ADD build/build_tmux.sh .
+COPY build/build_tmux.sh .
+COPY build/libevent-2.1.12-stable.tar.gz .
+COPY build/musl-1.2.2.tar.gz .
+COPY build/ncurses-6.2.tar.gz .
 RUN ./build_tmux.sh "${HOME}/local"
 
 
