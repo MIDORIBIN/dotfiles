@@ -5,15 +5,20 @@ RUN sed -i.org -e 's|archive.ubuntu.com|ubuntutym.u-toyama.ac.jp|g' /etc/apt/sou
         curl \
         docker.io \
         make \
-        vim
+        vim \
+ && apt-get -y clean \
+ && rm -rf /var/lib/apt/lists/*
+
+COPY ./install_rcm.sh .
+RUN bash ./install_rcm.sh
 
 # ユーザーを作成
+ENV USER=hoge
 ARG UID=1000
 ARG DOCKER_GROUP_ID=1001
-RUN useradd -m -u ${UID} hoge \
+RUN useradd -m -u ${UID} ${USER} \
  && groupmod -g ${DOCKER_GROUP_ID} docker \
- && usermod -aG docker hoge
+ && usermod -aG docker ${USER}
 USER ${UID}
-ENV USER=hoge
 
 CMD [ "bash" ]
