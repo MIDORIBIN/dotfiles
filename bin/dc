@@ -1,0 +1,17 @@
+#/bin/bash
+
+args="-u $(id -u):$(id -g)"
+
+if [ -d ${HOME}/local ]; then
+    args="${args} -v ${HOME}/local:${HOME}/local:ro -e HOME=${HOME}"
+fi
+
+if [ -f ${HOME}/.bashrc ]; then
+    args="${args} -v $(readlink -f ${HOME}/.bashrc):${HOME}/.bashrc:ro"
+fi
+
+args="${args} $@"
+
+docker_id=$(docker create -it ${args})
+docker start ${docker_id} > /dev/null
+echo "docker exec -it ${docker_id} bash"
