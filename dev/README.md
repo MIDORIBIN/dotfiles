@@ -10,14 +10,11 @@ docker build -t dotfile -f dev/Dockerfile .
 
 ```
 docker run --rm -it \
-    -v ${PWD}:/home/hoge/.local/share/chezmoi \
-    -w /home/hoge/ \
-    -u hoge \
+    -v ${PWD}:/root/.local/share/chezmoi \
     --name dotfile_dev \
-    dotfile bash
+    dotfile
 ```
 
-install
-```
-~/.local/share/chezmoi/dev/install.sh
-```
+## フォント
+
+https://github.com/yuru7/HackGen

@@ -3,12 +3,14 @@ FROM ubuntu:22.04
 RUN sed -i.org -e 's|archive.ubuntu.com|ubuntutym.u-toyama.ac.jp|g' /etc/apt/sources.list \
  && apt-get update && apt-get install -y \
         curl \
-        vim
+        vim \
+        zsh \
+        git
 
-# ユーザーを作成
-ENV USER=hoge
-ARG UID=1000
-RUN useradd -m -u ${UID} ${USER}
-USER ${UID}
+WORKDIR /root
+ENV PATH=/root/bin:${PATH}
+RUN sh -c "$(curl -fsLS get.chezmoi.io)"
 
-CMD [ "bash" ]
+COPY dev/startup.sh /startup.sh
+RUN chmod +x /startup.sh
+CMD [ "/startup.sh" ]
