@@ -7,10 +7,13 @@ RUN sed -i.org -e 's|archive.ubuntu.com|ubuntutym.u-toyama.ac.jp|g' /etc/apt/sou
         zsh \
         git
 
-WORKDIR /root
-ENV PATH=/root/bin:${PATH}
-RUN sh -c "$(curl -fsLS get.chezmoi.io)"
+# Install chezmoi
+ENV PATH=/root/.local/bin:${PATH}
+RUN sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /root/.local/bin
 
-COPY dev/startup.sh /startup.sh
-RUN chmod +x /startup.sh
-CMD [ "/startup.sh" ]
+# Setting dotfiles
+COPY . /root/.local/share/chezmoi
+RUN chezmoi apply
+RUN zsh ~/.zshrc; exit 0
+
+CMD [ "zsh" ]

@@ -11,6 +11,7 @@ docker build -t dotfile -f dev/Dockerfile .
 ```
 docker run --rm -it \
     -v ${PWD}:/root/.local/share/chezmoi \
+    -w /root \
     --name dotfile_dev \
     dotfile
 ```
