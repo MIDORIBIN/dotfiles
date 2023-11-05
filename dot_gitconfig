@@ -3,3 +3,6 @@
 [user]
 	name = MIDORIBIN
 	email = aquarion123@gmail.com
+[alias]
+	ss = status
+	br = branch
