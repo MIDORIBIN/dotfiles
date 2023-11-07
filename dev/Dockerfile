@@ -12,4 +12,6 @@ COPY . /root/.local/share/chezmoi
 RUN sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /root/.local/bin apply \
  && zsh ~/.zshrc; zsh ~/.zshrc; exit 0
 
-CMD [ "zsh" ]
+COPY dev/startup.sh /startup.sh
+RUN chmod +x /startup.sh
+CMD [ "/startup.sh" ]
