@@ -1,11 +1,19 @@
-FROM ubuntu:22.04
+FROM ubuntu:24.04
 
-RUN sed -i.org -e 's|archive.ubuntu.com|ubuntutym.u-toyama.ac.jp|g' /etc/apt/sources.list \
+RUN sed -i.bak -E '/^URIs:/ { \
+    N; /Suites:.*-security/! { \
+      s@http://(jp\.)?archive\.ubuntu\.com/ubuntu/?@http://ftp.udx.icscoe.jp/Linux/ubuntu/@; \
+      s@http://(jp\.)?ports\.ubuntu\.com/ubuntu-ports/?@http://ftp.udx.icscoe.jp/Linux/ubuntu-ports/@; \
+    } \
+  }' /etc/apt/sources.list.d/ubuntu.sources \
  && apt-get update && apt-get install -y \
         curl \
         vim \
         zsh \
         git
+
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh \
+ && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
 
 # Setting dotfiles
 COPY . /root/.local/share/chezmoi

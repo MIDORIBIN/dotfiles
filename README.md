@@ -15,3 +15,27 @@ rm /tmp/HackGen_NF_v2.9.0.zip
 mkdir -p ${HOME}/.local/share/fonts
 mv /tmp/HackGen_NF_v2.9.0 ${HOME}/.local/share/fonts/HackGenNF
 ```
+
+## Python uv
+
+https://docs.astral.sh/uv/
+
+```sh
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
+
+```sh
+uv python install --preview-features python-install-default --default 3.14.3
+```
+
+## Node nvm
+
+https://github.com/nvm-sh/nvm
+
+```sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+```
+
+```sh
+nvm install --lts 
+```
