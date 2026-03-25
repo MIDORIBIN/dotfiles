@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/code-yeongyu/oh-my-opencode/master/assets/oh-my-opencode.schema.json",
+  "agents": {
+    "sisyphus": {
+      "model": "azure/gpt-5.4-pro"
+    },
+    "metis": {
+      "model": "azure/gpt-5.4-pro"
+    },
+    "prometheus": {
+      "model": "azure/gpt-5.4-pro"
+    },
+    "atlas": {
+      "model": "azure/gpt-5.4-pro"
+    },
+    "hephaestus": {
+      "model": "azure/gpt-5.3-codex"
+    },
+    "oracle": {
+      "model": "azure/gpt-5.4-pro"
+    },
+    "momus": {
+      "model": "azure/gpt-5.4-pro"
+    },
+    "explore": {
+      "model": "azure/gpt-5.4-nano"
+    },
+    "librarian": {
+      "model": "azure/gpt-5.4-nano"
+    },
+    "multimodal-looker": {
+      "model": "azure/gpt-5.4-pro"
+    }
+  },
+  "categories": {
+    "visual-engineering": {
+      "model": "azure/gpt-5.4-pro"
+    },
+    "ultrabrain": {
+      "model": "azure/gpt-5.4-pro"
+    },
+    "deep": {
+      "model": "azure/gpt-5.3-codex"
+    },
+    "artistry": {
+      "model": "azure/gpt-5.4-pro"
+    },
+    "quick": {
+      "model": "azure/gpt-5.4-nano"
+    },
+    "unspecified-high": {
+      "model": "azure/gpt-5.4-pro"
+    },
+    "unspecified-low": {
+      "model": "azure/gpt-5.3-codex"
+    },
+    "writing": {
+      "model": "azure/gpt-5.4-pro"
+    }
+  }
+}

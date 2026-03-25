@@ -39,3 +39,19 @@ curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
 ```sh
 nvm install --lts 
 ```
+
+## Opencode
+
+https://opencode.ai/ja
+
+```
+curl -fsSL https://opencode.ai/install | bash
+```
+
+## oh-my-openagent
+
+https://github.com/code-yeongyu/oh-my-openagent
+
+```
+npx oh-my-opencode install --no-tui --claude=no --gemini=no --copilot=no --openai=no --opencode-go=no --opencode-zen=no --zai-coding-plan=no
+```
